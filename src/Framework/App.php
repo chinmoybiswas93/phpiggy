@@ -8,6 +8,6 @@ class App
 {
     public function run(): void
     {
-        echo "Hello, World! This is the App running.";
+        echo "Hello, World!";
     }
 }
