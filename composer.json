@@ -1,0 +1,18 @@
+{
+  "name": "support/phpiggy",
+  "description": "An application for personal expense tracking.",
+  "type": "project",
+  "authors": [
+    {
+      "name": "chinmoybiswas93",
+      "email": "chinmoy709@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Framework\\": "src/Framework",
+      "App\\": "src/App"
+    }
+  }
+}
