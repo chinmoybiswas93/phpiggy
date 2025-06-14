@@ -16,11 +16,7 @@ class TemplateEngine
         // Extract data to variables for use in the template
         extract($data, EXTR_SKIP);
 
-        $filePath = "{$this->basePath}/{$template}";
-
-        if (!file_exists($filePath)) {
-            throw new \RuntimeException("Template file not found: {$filePath}");
-        }
+        $filePath = $this->resolve($template);
 
         ob_start();
         include $filePath;
@@ -29,5 +25,16 @@ class TemplateEngine
         ob_end_clean();
 
         return $output;
+    }
+
+    public function resolve(string $template)
+    {
+        $filePath = "{$this->basePath}/{$template}";
+
+        if (!file_exists($filePath)) {
+            throw new \RuntimeException("Template file not found: {$filePath}");
+        }
+
+        return $filePath;
     }
 }
