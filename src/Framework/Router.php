@@ -25,7 +25,7 @@ class Router
         return $path;
     }
 
-    public function dispatch(string $path, string $method)
+    public function dispatch(string $path, string $method, ?Container $container = null): void
     {
         $path = $this->normalizePath($path);
         $method = strtoupper($method);
@@ -33,7 +33,11 @@ class Router
         foreach ($this->routes as $route) {
             if (preg_match("#^{$route['path']}$#", $path) && $route['method'] === $method) {
                 [$class, $function] = $route['controller'];
-                $controllerInstance = new $class();
+
+                $controllerInstance = $container ?
+                    $container->resolve($class) :
+                    new $class();
+
                 $controllerInstance->{$function}();
                 return;
             }

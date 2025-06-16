@@ -8,7 +8,8 @@
     <hr />
 
     <!-- Escaping Data -->
-    <p>Escaping Data: </p>
+    <p>Escaping Data: <?= e($message) ?>
+    </p>
 </section>
 <!-- End Main Content Area -->
 <?php include $this->resolve('partials/_footer.php'); ?>
